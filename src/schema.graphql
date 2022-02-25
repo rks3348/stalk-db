@@ -1,0 +1,33 @@
+type Book {
+	title: String
+	author: String
+}
+
+type User {
+	id: Int
+	name: String
+	email: String
+}
+
+type Category {
+	id: Int
+	name: String
+}
+
+type Query {
+	books: [Book]
+	users: [User]
+	getCategory: [Category]
+}
+
+type AuthPayload {
+	token: String!
+	user: User!
+}
+
+type Mutation {
+	# This mutation takes id and email parameters and responds with a User
+  	updateUserEmail(id: Int, email: String!): User!
+	signup(name: String!, email: String!, password: String!): AuthPayload!
+	signin(email: String!, password: String!): AuthPayload!
+}
